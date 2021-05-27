@@ -16,11 +16,14 @@ let package = Package(
     .target(name: "CollectionUtil"),
     .target(name: "FloatingPointUtil"),
     .target(name: "CGRectUtil"),
-    .target(name: "GridView", resources: [.process("Resources/gridViewImage"),]),
+    .target(name: "GridView"),
     
     .testTarget(name: "CollectionUtilTests", dependencies: ["CollectionUtil"]),
     .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
     .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
-    .testTarget(name: "GridViewTests", dependencies: ["GridView"]),
+    .testTarget(name: "GridViewTests",
+                dependencies: ["GridView"],
+                resources: [.process("Resources/gridViewImage"),]
+                )
   ]
 )

@@ -74,7 +74,7 @@ public struct DrawGrid {
     if options.contains(.hasDotInTheMiddle) {
       context.setFillColor(CGColor(colorSpace: colorSpace, components: [1, 0, 0, 0.5])!)
       let middlePoint = CGPoint(x: 0.5, y: 0.5)
-      let radius: CGFloat = squareSide + 1.0;
+      let radius: CGFloat = 5.0
       context.fillEllipse(in: CGRect(x: (middlePoint.x * bounds.size.width) - radius,
                                      y: (middlePoint.y * bounds.size.height) - radius,
                                      width: 2 * radius,

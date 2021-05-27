@@ -6,7 +6,16 @@
 //
 
 import XCTest
+import Foundation
 @testable import GridView
+
+#if os(iOS) || os(tvOS)
+import UIKit
+#endif
+
+#if os(OSX)
+import Cocoa
+#endif
 
 final class GridViewTests: XCTestCase {
   
@@ -25,6 +34,18 @@ final class GridViewTests: XCTestCase {
     let fileManager = FileManager.default
     let fileExists = fileManager.fileExists(atPath: filePathString)
     XCTAssertTrue(fileExists)
+    
+    let testImageURL = Bundle.module.url(forResource: "gridViewImage", withExtension: "bmp")
+    #if os(iOS) || os(tvOS)
+    let testPlatformImage = UIImage(contentsOf: testImageURL)
+    #endif
+    #if os(OSX)
+    let testPlatformImage = NSImage(contentsOf: testImageURL)
+    #endif
+    let cgImage = testPlatformImage.cgImage
+
+    XCTAssertNotNil(cgImage)
+    
   }
   
 }
