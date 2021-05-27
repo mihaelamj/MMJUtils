@@ -17,3 +17,8 @@ Utility code I use on nearly every project.
 
 - Generating random CGRects
 - Centering CGRects
+
+
+## GridView
+
+- Drawing a `GridView` with `Core Graphics` for testing purposes
