@@ -26,6 +26,7 @@ public extension GridDrawingView {
     
     context.saveGState()
     
+    
     // flip the drawing
     context.translateBy(x: 0, y: size.height);
     context.scaleBy(x: 1.0, y: -1.0);

@@ -4,23 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "MMJUtils",
-    products: [
-        .library(name: "CollectionUtil", targets: ["CollectionUtil"]),
-        .library(name: "FloatingPointUtil", targets: ["FloatingPointUtil"]),
-        .library(name: "CGRectUtil", targets: ["CGRectUtil"]),
-        .library(name: "GridView", targets: ["GridView"]),
-    ],
-
-    targets: [
-        .target(name: "CollectionUtil"),
-        .target(name: "FloatingPointUtil"),
-        .target(name: "CGRectUtil"),
-        .target(name: "GridView"),
-      
-        .testTarget(name: "CollectionUtilTests", dependencies: ["CollectionUtil"]),
-        .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
-        .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
-        .testTarget(name: "GridViewTests", dependencies: ["GridView"]),
-    ]
+  name: "MMJUtils",
+  products: [
+    .library(name: "CollectionUtil", targets: ["CollectionUtil"]),
+    .library(name: "FloatingPointUtil", targets: ["FloatingPointUtil"]),
+    .library(name: "CGRectUtil", targets: ["CGRectUtil"]),
+    .library(name: "GridView", targets: ["GridView"]),
+  ],
+  
+  targets: [
+    .target(name: "CollectionUtil"),
+    .target(name: "FloatingPointUtil"),
+    .target(name: "CGRectUtil"),
+    .target(name: "GridView", resources: [.process("Resources/gridViewImage"),]),
+    
+    .testTarget(name: "CollectionUtilTests", dependencies: ["CollectionUtil"]),
+    .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
+    .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
+    .testTarget(name: "GridViewTests", dependencies: ["GridView"]),
+  ]
 )

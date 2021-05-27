@@ -5,8 +5,6 @@
 //  Created by Mihaela Mihaljevic Jakic on 27.05.2021..
 //
 
-import Foundation
-
 #if os(iOS) || os(tvOS)
 import UIKit.UIView
 public typealias ViewType = UIView
