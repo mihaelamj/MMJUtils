@@ -11,3 +11,9 @@ Utility code I use on nearly every project.
 ## FloatingPointUtil
 
 - Adds a helper method to round to the nearest value, with rounding rules
+
+
+## CGRectUtil
+
+- Generating random CGRects
+- Centering CGRects

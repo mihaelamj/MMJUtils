@@ -8,13 +8,16 @@ let package = Package(
     products: [
         .library(name: "CollectionUtil", targets: ["CollectionUtil"]),
         .library(name: "FloatingPointUtil", targets: ["FloatingPointUtil"]),
+        .library(name: "CGRectUtil", targets: ["CGRectUtil"]),
     ],
 
     targets: [
         .target(name: "CollectionUtil"),
         .target(name: "FloatingPointUtil"),
+        .target(name: "CGRectUtil"),
       
         .testTarget(name: "CollectionUtilTests", dependencies: ["CollectionUtil"]),
         .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
+        .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
     ]
 )
