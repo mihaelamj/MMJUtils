@@ -60,7 +60,9 @@ public class CenteredGridView: ViewType {
   // MARK: Layout -
   
   private func myLayoutSubviews() {
-    sizeToSuperView()
+    if #available(macOS 10.11, *) {
+      sizeToSuperView()
+    } 
     
     var topDelta: CGFloat = 0.0
     var bottomDelta: CGFloat = 0.0
@@ -116,6 +118,8 @@ private extension CenteredGridView {
     addSubview(gridView)
   }
   
+  
+  @available(macOS 10.11, *)
   func sizeToSuperView() {
     guard let aSuperview = superview else { return }
     translatesAutoresizingMaskIntoConstraints = false
