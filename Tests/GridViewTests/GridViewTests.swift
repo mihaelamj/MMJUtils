@@ -36,6 +36,7 @@ final class GridViewTests: XCTestCase {
     XCTAssertTrue(fileExists)
     
 //    let testImageURL = Bundle.module.url(forResource: "gridViewImage", withExtension: "bmp")
+    
 //    #if os(iOS) || os(tvOS)
 //    let testPlatformImage = UIImage(contentsOf: testImageURL)
 //    #endif
@@ -48,4 +49,13 @@ final class GridViewTests: XCTestCase {
     
   }
   
+//  static var bundle: Bundle {
+//    #if SWIFT_PACKAGE
+//    return Bundle.module
+//    #else
+//    return Bundle(for: GridViewTests.self)
+//    #endif
+//  }
+  
 }
+

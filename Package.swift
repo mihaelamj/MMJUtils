@@ -22,8 +22,8 @@ let package = Package(
     .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
     .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
     .testTarget(name: "GridViewTests",
-                dependencies: ["GridView"],
-                resources: [.process("Resources/gridViewImage"),]
+                dependencies: ["GridView"]//,
+            //    resources: [.copy("Resources/gridViewImage"),]
                 )
   ]
 )
