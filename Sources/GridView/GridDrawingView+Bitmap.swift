@@ -1,6 +1,6 @@
 //
-//  GridDrawingView.swift
-//  
+//  GridDrawingView+Bitmap.swift
+//  MMJUtils - GridView
 //
 //  Created by Mihaela Mihaljevic Jakic on 27.05.2021..
 //
@@ -25,7 +25,6 @@ public extension GridDrawingView {
     else { return nil }
     
     context.saveGState()
-    
     
     // flip the drawing
     context.translateBy(x: 0, y: size.height);

@@ -1,6 +1,6 @@
 //
 //  FloatingPoint+Nearest.swift
-//  MMJUtils
+//  MMJUtils - FloatingPointUtil
 //
 //  Created by Mihaela Mihaljevic Jakic on 25.05.2021..
 //  https://stackoverflow.com/questions/27922406/round-double-to-closest-10

@@ -35,6 +35,8 @@ final class GridViewTests: XCTestCase {
     let fileExists = fileManager.fileExists(atPath: filePathString)
     XCTAssertTrue(fileExists)
     
+    // FIXME: Make SPM work with `Bundle.module` -
+    
 //    let testImageURL = Bundle.module.url(forResource: "gridViewImage", withExtension: "bmp")
     
 //    #if os(iOS) || os(tvOS)

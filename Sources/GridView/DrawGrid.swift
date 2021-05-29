@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  DrawGrid.swift
+//  MMJUtils - GridView
 //
 //  Created by Mihaela Mihaljevic Jakic on 27.05.2021..
 //

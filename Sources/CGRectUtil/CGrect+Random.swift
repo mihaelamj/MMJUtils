@@ -1,6 +1,6 @@
 //
 //  CGrect+Random.swift
-//  
+//  MMJUtils - CGRectUtil
 //
 //  Created by Mihaela Mihaljevic Jakic on 27.05.2021..
 //

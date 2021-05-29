@@ -1,6 +1,6 @@
 //
 //  Collection+Safe..swift
-//  MMJUtils
+//  MMJUtils - CollectionUtil
 //
 //  Created by Mihaela Mihaljevic Jakic on 25.05.2021..
 //
