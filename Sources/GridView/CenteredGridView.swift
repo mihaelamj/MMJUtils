@@ -40,7 +40,7 @@ public class CenteredGridView: ViewType {
   // MARK: -
   // MARK: Init -
   
-  required init() {
+  public required init() {
     super.init(frame: .zero)
     setupLayer()
     setupViews()
