@@ -13,6 +13,8 @@ import UIKit
 import Cocoa
 #endif
 
+import GridProperties
+
 public class CenteredGridView: ViewType {
   
   private(set) public lazy var gridBackgroundLayer: CALayer = {

@@ -7,21 +7,21 @@
 
 import Foundation
 import CoreGraphics
+import GridProperties
 
 public struct DrawGrid {
-  public func draw(_ context: CGContext, rectToFill: CGRect, options : GridProperties.Options, lineSize: GridProperties.LineSize) {
+  public func draw(_ context: CGContext, rectToFill: CGRect, options : GridProperties.Options, lineSize: GridProperties.LineSize, colors: GridProperties.Colors) {
     
     let squareSide = lineSize.sideWidth
     let lineWidth = lineSize.lineWidth
     let bounds = rectToFill
     
-    let colorSpace = CGColorSpaceCreateDeviceRGB()
     
-    let whiteColor = CGColor(colorSpace: colorSpace, components: [1, 1, 1, 1])!
+    let whiteColor = colors.backgroundColor.cgColor
     context.setFillColor(whiteColor)
     context.fill(bounds)
     
-    let color = CGColor(colorSpace: colorSpace, components: [0, 0, 0, 0.2])!
+    let color = colors.lineColor.cgColor
     context.setStrokeColor(color)
     context.setLineWidth(lineWidth)
     
@@ -47,7 +47,7 @@ public struct DrawGrid {
 
     // Draw top-left red square
     if options.contains(.hasTopLeftSquare) {
-      context.setFillColor(CGColor(colorSpace: colorSpace, components: [1, 0, 0, 0.5])!)
+      context.setFillColor(colors.topLeftSquareColor.cgColor)
       context.fill(CGRect(x: 0, y: 0, width: squareSide, height: squareSide))
     }
     
@@ -56,13 +56,13 @@ public struct DrawGrid {
       // Draw yellow square
       let x = bounds.size.width - squareSide
       let y = bounds.size.height - squareSide
-      context.setFillColor(CGColor(colorSpace: colorSpace, components: [0, 0, 0, 0.5])!)
+      context.setFillColor(colors.bottomRightSquareColor.cgColor)
       context.fill(CGRect(x: x, y: y, width: squareSide, height: squareSide))
     }
     
     // Draw blue triangle along the diagonal
     if options.contains(.hasDiagonalTriangle) {
-      context.setFillColor(CGColor(colorSpace: colorSpace, components: [0, 0, 1, 0.2])!)
+      context.setFillColor(colors.diagonalTriangleColor.cgColor)
       context.move(to: CGPoint(x: bounds.size.width, y: 0))
       context.addLine(to: CGPoint(x: bounds.size.width, y: bounds.size.height))
       context.addLine(to: CGPoint(x: 0, y: bounds.size.height))
@@ -72,7 +72,7 @@ public struct DrawGrid {
     
     // Draw red dot in the middle
     if options.contains(.hasDotInTheMiddle) {
-      context.setFillColor(CGColor(colorSpace: colorSpace, components: [1, 0, 0, 0.5])!)
+      context.setFillColor(colors.centerCircleColor.cgColor)
       let middlePoint = CGPoint(x: 0.5, y: 0.5)
       let radius: CGFloat = 5.0
       context.fillEllipse(in: CGRect(x: (middlePoint.x * bounds.size.width) - radius,

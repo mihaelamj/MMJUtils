@@ -31,7 +31,7 @@ public extension GridDrawingView {
     context.scaleBy(x: 1.0, y: -1.0);
     
     let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-    DrawGrid().draw(context, rectToFill: rect, options: options, lineSize: lineSize)
+    DrawGrid().draw(context, rectToFill: rect, options: options, lineSize: lineSize, colors: colors)
     
     context.restoreGState()
 //    CGColorSpaceRelease(colorSpace) //CGColorSpaceRelease' is unavailable: Core Foundation objects are automatically memory managed

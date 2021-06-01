@@ -13,6 +13,7 @@ import AppKit.NSView
 public typealias ViewType = NSView
 #endif
 
+import GridProperties
 
 public class GridDrawingView: ViewType {
   
@@ -21,6 +22,7 @@ public class GridDrawingView: ViewType {
   
   public var options: GridProperties.Options = .all
   public var lineSize: GridProperties.LineSize = .normal
+  public var colors: GridProperties.Colors = GridProperties.Colors.`default`
   
   // MARK:-
   // MARK: Platform Dependant -
@@ -61,7 +63,7 @@ extension GridDrawingView: CALayerDelegate {
 private extension GridDrawingView {
   func drawWithCoreGraphics(_ context: CGContext) {
     context.saveGState()
-    DrawGrid().draw(context, rectToFill: bounds, options: options, lineSize: lineSize)
+    DrawGrid().draw(context, rectToFill: bounds, options: options, lineSize: lineSize, colors: colors)
     context.restoreGState()
   }
 }

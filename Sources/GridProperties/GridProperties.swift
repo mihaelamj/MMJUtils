@@ -8,7 +8,25 @@
 import Foundation
 import CoreGraphics
 
+#if os(iOS) || os(tvOS)
+import UIKit.UIColor
+public typealias ColorType = UIColor
+#elseif os(macOS)
+import AppKit.NSColor
+public typealias ColorType = NSColor
+#endif
+
 public struct GridProperties {
+  
+  public var options: GridProperties.Options = .all
+  public var lineSize: GridProperties.LineSize = .normal
+  public var colors: Colors = Colors.`default`
+  
+  public static let `default` = GridProperties()
+  public static let tiny: GridProperties = GridProperties(options: .all, lineSize: .tiny, colors: .`default`)
+  public static let small: GridProperties = GridProperties(options: .all, lineSize: .small, colors: .`default`)
+  public static let normal: GridProperties = GridProperties(options: .all, lineSize: .normal, colors: .`default`)
+  public static let large: GridProperties = GridProperties(options: .all, lineSize: .large, colors: .`default`)
   
   public enum LineSize: String, CaseIterable {
     case tiny
@@ -58,4 +76,16 @@ public struct GridProperties {
     public static let `default`: Options  = [.hasTopLeftSquare, .hasDiagonalTriangle]
     public static let all: Options = [.hasTopLeftSquare, .hasBottomRightSquare, .hasDiagonalTriangle, .hasDotInTheMiddle]
   }
+  
+  public struct Colors {
+    public var backgroundColor: ColorType = .white
+    public var lineColor: ColorType = ColorType(red: 0, green: 0, blue: 0, alpha: 0.2)
+    public var topLeftSquareColor: ColorType = ColorType(red: 0, green: 0, blue: 0, alpha: 0.5)
+    public var bottomRightSquareColor: ColorType = ColorType(red: 0, green: 0, blue: 0, alpha: 0.5)
+    public var diagonalTriangleColor: ColorType = ColorType(red: 0, green: 0, blue: 1, alpha: 0.4)
+    public var centerCircleColor: ColorType = ColorType(red: 1, green: 0, blue: 0, alpha: 0.6)
+    
+    public static let `default` = Colors()
+  }
+  
 }
