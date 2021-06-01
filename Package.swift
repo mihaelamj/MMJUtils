@@ -11,6 +11,11 @@ let package = Package(
     .library(name: "CGRectUtil", targets: ["CGRectUtil"]),
     .library(name: "GridProperties", targets: ["GridProperties"]),
     .library(name: "GridView", targets: ["GridView"]),
+    .library(name: "GridViewSwiftUI", targets: ["GridViewSwiftUI"]),
+  ],
+  
+  dependencies: [
+    .package(url: "https://github.com/nalexn/ViewInspector.git", from: "0.7.0")
   ],
   
   targets: [
@@ -19,13 +24,12 @@ let package = Package(
     .target(name: "CGRectUtil"),
     .target(name: "GridProperties"),
     .target(name: "GridView", dependencies: ["GridProperties"]),
+    .target(name: "GridViewSwiftUI", dependencies: ["GridProperties"]),
     
     .testTarget(name: "CollectionUtilTests", dependencies: ["CollectionUtil"]),
     .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
     .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
-    .testTarget(name: "GridViewTests",
-                dependencies: ["GridView", "GridProperties"]//,
-            //    resources: [.copy("Resources/gridViewImage"),]
-                )
+    .testTarget(name: "GridViewTests", dependencies: ["GridView", "GridProperties"]),
+    .testTarget(name: "GridViewSwiftUITests", dependencies: ["GridViewSwiftUI", "GridProperties", "ViewInspector"])
   ]
 )

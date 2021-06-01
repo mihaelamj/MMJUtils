@@ -22,3 +22,8 @@ Utility code I use on nearly every project.
 ## GridView
 
 - Drawing a `GridView` with `Core Graphics` for testing purposes
+
+## GridViewSwiftUI
+
+- Drawing the same grid view, but this time with SwiftUI.
+- Using `Path` and `GeometryReader`

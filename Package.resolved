@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ViewInspector",
+        "repositoryURL": "https://github.com/nalexn/ViewInspector.git",
+        "state": {
+          "branch": null,
+          "revision": "c238f8b55ab2bb98f462398a2d429f38a519eb70",
+          "version": "0.7.7"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
