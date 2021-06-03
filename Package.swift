@@ -34,7 +34,8 @@ let package = Package(
     .testTarget(name: "FloatingPointUtilTests", dependencies: ["FloatingPointUtil"]),
     .testTarget(name: "CGRectUtilTests", dependencies: ["CGRectUtil"]),
     .testTarget(name: "GridPropertiesTests", dependencies: ["GridView", "GridProperties"]),
-    .testTarget(name: "GridViewTests", dependencies: ["GridView", "GridProperties"]),
+    .testTarget(name: "GridViewTests", dependencies: ["GridView", "GridProperties"]),//
+//    .testTarget(name: "GridDrawingViewTests", dependencies: ["GridView", "GridProperties"]),
     .testTarget(name: "GridViewSwiftUITests", dependencies: ["GridViewSwiftUI", "GridProperties", "ViewInspector"])
   ]
 )

@@ -40,6 +40,7 @@ public class GridDrawingView: ViewType {
         setNeedsDisplay()
         #endif
         #if os(OSX)
+        self.needsDisplay = true
         setNeedsDisplay(bounds)
         #endif
       }
@@ -60,7 +61,7 @@ public class GridDrawingView: ViewType {
   
   public init(properties: GridProperties) {
     super.init(frame: .zero)
-    self.properties = properties
+   _properties = properties
   }
   
   required init?(coder: NSCoder) {

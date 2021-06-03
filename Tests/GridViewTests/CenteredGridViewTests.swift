@@ -51,7 +51,7 @@ final class CenteredGridViewTests: XCTestCase {
 //    XCTAssertNotNil(cgImage)
   }
   
-  func test_CenteredGridView_Layout_IsCalled_When_Changing_GridProperties() {
+  func test_Layout_IsCalled_When_Changing_Some_GridProperties() {
     
     class TestCenteredGridView: CenteredGridView {
       public var didCallLayout = false
