@@ -21,28 +21,28 @@ import Cocoa
 final class GridPropertiesTests: XCTestCase {
   
   func test_changingColor_should_Include_needsDisplay() {
-    var properties1 = GridProperties.`default`
+    let properties1 = GridProperties.`default`
     let newColors = GridProperties.Colors(backgroundColor: .blue, lineColor: .red, topLeftSquareColor: .yellow, bottomRightSquareColor: .gray, diagonalTriangleColor: .black, centerCircleColor: .white)
     let properties2 = GridProperties(options: .basic, lineSize: .small, colors: newColors)
     
-    properties1.updateLayoutStateWith(newProperties: properties2)
-    XCTAssertTrue(properties1.layoutState.contains(.needsDisplay))
+    let layoutState = properties1.calculateNewLayoutStateWithChangedProperties(properties2)
+    XCTAssertTrue(layoutState.contains(.needsDisplay))
   }
   
   func test_changingLineSize_should_Include_needsDisplay_and_needslayout() {
-    var properties1 = GridProperties.`default`
+    let properties1 = GridProperties.`default`
     let properties2 = GridProperties(options: .basic, lineSize: .large, colors: .default)
     
-    properties1.updateLayoutStateWith(newProperties: properties2)
-    XCTAssertTrue(properties1.layoutState.contains(.needsDisplay))
-    XCTAssertTrue(properties1.layoutState.contains(.needsLayout))
+    let layoutState = properties1.calculateNewLayoutStateWithChangedProperties(properties2)
+    XCTAssertTrue(layoutState.contains(.needsDisplay))
+    XCTAssertTrue(layoutState.contains(.needsLayout))
   }
   
   func test_changingOptions_should_Include_needsDisplay() {
-    var properties1 = GridProperties.`default`
+    let properties1 = GridProperties.`default`
     let properties2 = GridProperties(options: .all, lineSize: .large, colors: .default)
     
-    properties1.updateLayoutStateWith(newProperties: properties2)
-    XCTAssertTrue(properties1.layoutState.contains(.needsDisplay))
+    let layoutState = properties1.calculateNewLayoutStateWithChangedProperties(properties2)
+    XCTAssertTrue(layoutState.contains(.needsDisplay))
   }
 }

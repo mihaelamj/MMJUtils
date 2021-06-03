@@ -1,5 +1,5 @@
 //
-//  GridViewTests.swift
+//  CenteredGridViewTests.swift
 //  
 //
 //  Created by Mihaela Mihaljevic Jakic on 27.05.2021..
@@ -18,7 +18,7 @@ import UIKit
 import Cocoa
 #endif
 
-final class GridViewTests: XCTestCase {
+final class CenteredGridViewTests: XCTestCase {
   
   func testDrawGrid() throws {
     let gridView = GridDrawingView(properties: GridProperties.default)
@@ -49,45 +49,53 @@ final class GridViewTests: XCTestCase {
 //    let cgImage = testPlatformImage.cgImage
 //
 //    XCTAssertNotNil(cgImage)
-    
   }
   
   func test_CenteredGridView_Layout_IsCalled_When_Changing_GridProperties() {
     
     class TestCenteredGridView: CenteredGridView {
       public var didCallLayout = false
-      #if os(OSX)
-      public override func layout() {
-        super.layout()
-        didCallLayout = true
-      }
-      #endif
       #if os(iOS) || os(tvOS)
       public override func layoutSubviews() {
         super.layoutSubviews()
         didCallLayout = true
       }
       #endif
+      #if os(OSX)
+      public override func layout() {
+        super.layout()
+        didCallLayout = true
+      }
+      #endif
     }
     
     let testCenteredGridView = TestCenteredGridView()
-
+    XCTAssertEqual(testCenteredGridView.gridLayoutState, .none)
+   
     // INFO: Change view's `properties`
     testCenteredGridView.properties = GridProperties.tiny
+    debugPrint("testCenteredGridView.layoutState", testCenteredGridView.gridLayoutState.toString())
+    
+    #if os(OSX)
+    XCTAssertTrue(testCenteredGridView.needsLayout)
+    #endif
+    
+    XCTAssertEqual(testCenteredGridView.gridLayoutState, [.needsLayout, .needsDisplay])
+    
+    #if os(iOS) || os(tvOS)
+    testCenteredGridView.layoutIfNeeded()
     XCTAssertTrue(testCenteredGridView.didCallLayout)
+    #endif
     
-    testCenteredGridView.didCallLayout = false
-    
-    
+    #if os(OSX)
+    testCenteredGridView.layout()
+    XCTAssertTrue(testCenteredGridView.needsLayout)
+    #endif
   }
   
-//  static var bundle: Bundle {
-//    #if SWIFT_PACKAGE
-//    return Bundle.module
-//    #else
-//    return Bundle(for: GridViewTests.self)
-//    #endif
-//  }
+  func testGridDrawingView() {
+    
+  }
   
 }
 

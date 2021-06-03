@@ -20,16 +20,15 @@ public class CenteredGridView: ViewType {
   // MARK:-
   // MARK: Properties -
   
-  var properties1: GridProperties {
-    get { return gridView.properties }
-    set { gridView.properties = newValue }
+  var gridLayoutState: GridProperties.LayoutState {
+    return gridView.layoutState
   }
   
   var properties = GridProperties.default {
     didSet {
       gridView.properties = properties
       
-      if gridView.properties.layoutState.contains(.needsLayout) {
+      if gridView.layoutState.contains(.needsLayout) {
         #if os(iOS) || os(tvOS)
         setNeedsLayout()
         #endif
@@ -38,7 +37,7 @@ public class CenteredGridView: ViewType {
         #endif
       }
       
-      if gridView.properties.layoutState.contains(.needsDisplay) {
+      if gridView.layoutState.contains(.needsDisplay) {
         #if os(iOS) || os(tvOS)
         setNeedsDisplay()
         #endif

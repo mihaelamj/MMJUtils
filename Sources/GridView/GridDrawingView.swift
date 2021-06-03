@@ -23,10 +23,10 @@ public class GridDrawingView: ViewType {
   internal var _properties: GridProperties = .default
   var properties: GridProperties {
     set(newValue) {
-      _properties.updateLayoutStateWith(newProperties: newValue)
+      layoutState = properties.calculateNewLayoutStateWithChangedProperties(newValue)
       _properties = newValue
       
-      if _properties.layoutState.contains(.needsLayout) {
+      if layoutState.contains(.needsLayout) {
         #if os(iOS) || os(tvOS)
         setNeedsLayout()
         #endif
@@ -35,7 +35,7 @@ public class GridDrawingView: ViewType {
         #endif
       }
       
-      if _properties.layoutState.contains(.needsDisplay) {
+      if layoutState.contains(.needsDisplay) {
         #if os(iOS) || os(tvOS)
         setNeedsDisplay()
         #endif
@@ -49,6 +49,11 @@ public class GridDrawingView: ViewType {
       return _properties
     }
   }
+  
+  // MARK: -
+  // MARK: Layout Properties -
+  
+  private(set) public var layoutState = GridProperties.LayoutState.none
   
   // MARK:-
   // MARK: Init -

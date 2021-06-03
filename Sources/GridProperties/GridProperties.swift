@@ -41,11 +41,6 @@ public struct GridProperties {
   }
   
   // MARK: -
-  // MARK: Layout Properties -
-  
-  private(set) public var layoutState = LayoutState.none
-  
-  // MARK: -
   // MARK: LineSize -
   
   public enum LineSize: String, CaseIterable, Equatable {
@@ -114,23 +109,6 @@ public struct GridProperties {
     public static let `default` = Colors()
   }
   
-  // MARK: -
-  // MARK: LayoutState -
-  
-  public struct LayoutState: OptionSet {
-    
-    public let rawValue: Int
-    public typealias RawValue = Int
-    
-    public init(rawValue: LayoutState.RawValue) {
-        self.rawValue = rawValue
-    }
-
-    public static let none = LayoutState([])
-    public static let needsLayout = LayoutState(rawValue: 1 << 1)
-    public static let needsDisplay = LayoutState(rawValue: 1 << 2)
-  }
-  
 }
 
 // MARK: -
@@ -144,29 +122,4 @@ extension GridProperties: Equatable {
   }
 }
 
-// MARK: -
-// MARK: Layout -
 
-extension GridProperties {
-  private func calculateNewLayoutStateWithChangedProperties(_ properties: GridProperties) -> LayoutState {
-    var resultLayout: LayoutState = LayoutState.none
-    
-    if self.colors != properties.colors {
-      resultLayout.insert(.needsDisplay)
-    }
-    
-    if self.lineSize != properties.lineSize {
-      resultLayout.insert(.needsDisplay)
-      resultLayout.insert(.needsLayout)
-    }
-    
-    if self.options != properties.options {
-      resultLayout.insert(.needsDisplay)
-    }
-    return resultLayout
-  }
-  
-  public mutating func updateLayoutStateWith(newProperties: GridProperties) {
-    layoutState = calculateNewLayoutStateWithChangedProperties(newProperties)
-  }
-}
