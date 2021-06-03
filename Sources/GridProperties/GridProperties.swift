@@ -32,6 +32,15 @@ public struct GridProperties {
   public static let large: GridProperties = GridProperties(options: .all, lineSize: .large, colors: .`default`)
   
   // MARK: -
+  // MARK: Init -
+  
+  public init(options: GridProperties.Options = .all, lineSize: GridProperties.LineSize = .normal, colors: GridProperties.Colors = Colors.`default`) {
+    self.options = options
+    self.lineSize = lineSize
+    self.colors = colors
+  }
+  
+  // MARK: -
   // MARK: Layout Properties -
   
   private(set) public var layoutState = LayoutState.none

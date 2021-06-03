@@ -21,12 +21,8 @@ public class CenteredGridView: ViewType {
   // MARK: Properties -
   
   var properties1: GridProperties {
-    get {
-      return gridView.properties
-    }
-    set {
-      gridView.properties = newValue
-    }
+    get { return gridView.properties }
+    set { gridView.properties = newValue }
   }
   
   var properties = GridProperties.default {
@@ -156,7 +152,6 @@ private extension CenteredGridView {
   func setupViews() {
     addSubview(gridView)
   }
-  
   
   @available(macOS 10.11, *)
   func sizeToSuperView() {
