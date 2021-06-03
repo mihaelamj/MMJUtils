@@ -56,6 +56,11 @@ public struct GridViewSwiftUI: View {
     }
     
   }
+  
+  public init(properties: GridProperties) {
+    self.properties = properties
+  }
+  
 }
 
 @available(macOS 10.15, *)

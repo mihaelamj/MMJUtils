@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
   name: "MMJUtils",
+  platforms: [
+    .macOS(.v10_15),
+    .iOS(.v13)
+  ],
   products: [
     .library(name: "CollectionUtil", targets: ["CollectionUtil"]),
     .library(name: "FloatingPointUtil", targets: ["FloatingPointUtil"]),

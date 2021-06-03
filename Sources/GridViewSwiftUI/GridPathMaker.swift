@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+@available(iOS 13, *)
+
 @available(macOS 10.15, *)
+
 public struct GridPathMaker {
 
   static func makeDrawGridPath(size: CGSize, squareSide: CGFloat) -> Path {
