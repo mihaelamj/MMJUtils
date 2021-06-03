@@ -10,7 +10,7 @@ import XCTest
 
 final class FloatingPointUtilTests: XCTestCase {
 
-  func testRoindTo10() throws {
+  func testRoundTo10() throws {
     let value = 325.0
     
     let rounded1 = value.rounded(to: 10)
@@ -20,7 +20,7 @@ final class FloatingPointUtilTests: XCTestCase {
     XCTAssertEqual(rounded2, 320)
   }
   
-  func testRoindTo5() throws {
+  func testRoundTo5() throws {
     let value = 324.0
     
     let rounded1 = value.rounded(to: 5)

@@ -17,6 +17,26 @@ import GridProperties
 
 public class CenteredGridView: ViewType {
   
+  // MARK:-
+  // MARK: Properties -
+  
+  var properties = GridProperties.default {
+    didSet {
+      gridView.properties = properties
+      
+      #if os(iOS) || os(tvOS)
+      setNeedsLayout()
+      #endif
+
+      #if os(OSX)
+      needsLayout = true
+      #endif
+    }
+  }
+  
+  // MARK:-
+  // MARK: UI Properties -
+  
   private(set) public lazy var gridBackgroundLayer: CALayer = {
     let bl = CALayer()
     bl.opacity = 0.2
@@ -33,9 +53,7 @@ public class CenteredGridView: ViewType {
   }()
   
   private(set) public lazy var gridView: GridDrawingView = {
-    let gv = GridDrawingView()
-    gv.options = .all
-    gv.lineSize = .small
+    let gv = GridDrawingView(properties: properties)
     return gv
   }()
   
@@ -82,7 +100,7 @@ public class CenteredGridView: ViewType {
     )
     
     layoutGridBackgroundLayer(rect: remainingRect)
-    layoutGridView(rect: remainingRect, squareSize: gridView.lineSize.sideWidth)
+    layoutGridView(rect: remainingRect, squareSize: gridView.properties.lineSize.sideWidth)
   }
   
   #if os(OSX)

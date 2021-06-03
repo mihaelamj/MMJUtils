@@ -21,7 +21,7 @@ import Cocoa
 final class GridViewTests: XCTestCase {
   
   func testDrawGrid() throws {
-    let gridView = GridDrawingView()
+    let gridView = GridDrawingView(properties: GridProperties.default)
     let size = CGSize(width: 100.0, height: 100.0)
     let gridViewImage = gridView.drawToImage(size: size)
     XCTAssertNotNil(gridViewImage)

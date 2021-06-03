@@ -20,9 +20,30 @@ public class GridDrawingView: ViewType {
   // MARK:-
   // MARK: Properties -
   
-  public var options: GridProperties.Options = .all
-  public var lineSize: GridProperties.LineSize = .normal
-  public var colors: GridProperties.Colors = GridProperties.Colors.`default`
+  var properties = GridProperties.default {
+    didSet {
+      
+      #if os(iOS) || os(tvOS)
+      setNeedsDisplay()
+      #endif
+
+      #if os(OSX)
+      setNeedsDisplay(bounds)
+      #endif
+    }
+  }
+  
+  // MARK:-
+  // MARK: Init -
+  
+  public init(properties: GridProperties) {
+    super.init(frame: .zero)
+    self.properties = properties
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK:-
   // MARK: Platform Dependant -
@@ -63,7 +84,7 @@ extension GridDrawingView: CALayerDelegate {
 private extension GridDrawingView {
   func drawWithCoreGraphics(_ context: CGContext) {
     context.saveGState()
-    DrawGrid().draw(context, rectToFill: bounds, options: options, lineSize: lineSize, colors: colors)
+    DrawGrid().draw(context, rectToFill: bounds, properties: properties)
     context.restoreGState()
   }
 }
