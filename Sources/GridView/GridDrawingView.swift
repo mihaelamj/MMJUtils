@@ -20,16 +20,33 @@ public class GridDrawingView: ViewType {
   // MARK:-
   // MARK: Properties -
   
-  var properties = GridProperties.default {
-    didSet {
+  internal var _properties: GridProperties = .default
+  var properties: GridProperties {
+    set(newValue) {
+      _properties.updateLayoutStateWith(newProperties: newValue)
+      _properties = newValue
       
-      #if os(iOS) || os(tvOS)
-      setNeedsDisplay()
-      #endif
+      if _properties.layoutState.contains(.needsLayout) {
+        #if os(iOS) || os(tvOS)
+        setNeedsLayout()
+        #endif
+        #if os(OSX)
+        needsLayout = true
+        #endif
+      }
+      
+      if _properties.layoutState.contains(.needsDisplay) {
+        #if os(iOS) || os(tvOS)
+        setNeedsDisplay()
+        #endif
+        #if os(OSX)
+        setNeedsDisplay(bounds)
+        #endif
+      }
+    }
 
-      #if os(OSX)
-      setNeedsDisplay(bounds)
-      #endif
+    get {
+      return _properties
     }
   }
   

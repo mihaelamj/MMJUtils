@@ -52,6 +52,35 @@ final class GridViewTests: XCTestCase {
     
   }
   
+  func test_CenteredGridView_Layout_IsCalled_When_Changing_GridProperties() {
+    
+    class TestCenteredGridView: CenteredGridView {
+      public var didCallLayout = false
+      #if os(OSX)
+      public override func layout() {
+        super.layout()
+        didCallLayout = true
+      }
+      #endif
+      #if os(iOS) || os(tvOS)
+      public override func layoutSubviews() {
+        super.layoutSubviews()
+        didCallLayout = true
+      }
+      #endif
+    }
+    
+    let testCenteredGridView = TestCenteredGridView()
+
+    // INFO: Change view's `properties`
+    testCenteredGridView.properties = GridProperties.tiny
+    XCTAssertTrue(testCenteredGridView.didCallLayout)
+    
+    testCenteredGridView.didCallLayout = false
+    
+    
+  }
+  
 //  static var bundle: Bundle {
 //    #if SWIFT_PACKAGE
 //    return Bundle.module
